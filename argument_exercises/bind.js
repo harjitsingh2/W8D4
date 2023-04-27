@@ -5,19 +5,15 @@ Function.prototype.myBind = function(context) {
     //console.log("arguments1:" + arguments);
     let arg1 = [];
     let that = this 
-    for (let i = 0; i < arguments.length; i++) {
-        if (!Array.isArray(arguments[i])) {
+    for (let i = 1; i < arguments.length; i++) {
             arg1.push(arguments[i])
-        }
     }
     //console.log("arg1:" + arg1)
     return function() {
         //console.log("arguments2:" + arguments);
         let arg2 = [];
         for (let j=0; j<arguments.length; j++) {
-            if (!Array.isArray(arguments[j])) {
                 arg1.push(arguments[j])
-            }
         }
         //console.log("arg2:" + arg2)
         return that.apply(context, arg1.concat(arg2))
